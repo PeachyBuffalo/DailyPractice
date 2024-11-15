@@ -1,0 +1,40 @@
+{
+  "scenario": {
+    "name": "Realtor Search Integration",
+    "modules": [
+      {
+        "name": "HTTP",
+        "type": "request",
+        "configuration": {
+          "url": "https://your-domain.com/run_search",
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json",
+            "X-API-Key": "{{your_api_key}}"
+          },
+          "body": {
+            "city": "holland",
+            "state": "mi",
+            "preferred_language": "English",
+            "specialization": "Residential",
+            "budget": {
+              "min": 140000,
+              "max": 550000
+            },
+            "area_specifics": {
+              "include_areas": ["Holland", "Zeeland"],
+              "exclude_areas": []
+            }
+          }
+        }
+      },
+      {
+        "name": "JSON Parser",
+        "type": "parser",
+        "configuration": {
+          "path": "$.results[*]"
+        }
+      }
+    ]
+  }
+} 
