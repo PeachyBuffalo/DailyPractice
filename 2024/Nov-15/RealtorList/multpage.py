@@ -34,3 +34,8 @@ async def scrape_agents(city: str, state: str) -> List[Dict]:
             page += 1
 
     return agents
+
+async def parse_agent_page(response) -> list:
+    """Parse the agent page HTML response and return a list of agent data."""
+    # Implement your parsing logic here
+    return []

@@ -20,43 +20,48 @@ async def load_config() -> List[Dict]:
 
 async def filter_agents(agents: List[Dict], search_params: Dict) -> List[Dict]:
     """Filter agents based on search parameters."""
+    # Add debug prints
+    print("\nFilter Parameters:")
+    print(f"Include Areas: {search_params['area_specifics']['include_areas']}")
+    print(f"Exclude Areas: {search_params['area_specifics']['exclude_areas']}")
+    print(f"Budget Range: ${search_params['budget']['min']:,} - ${search_params['budget']['max']:,}")
+    
     filtered_agents = []
     
     for agent in agents:
-        # Extract agent areas
-        agent_areas = [area.split(',')[0].strip() for area in agent.get('served_areas', [])]
+        # Extract agent areas - Update this to be case-insensitive
+        agent_areas = [area.split(',')[0].strip().lower() for area in agent.get('served_areas', [])]
+        search_include_areas = [area.lower() for area in search_params['area_specifics']['include_areas']]
+        search_exclude_areas = [area.lower() for area in search_params['area_specifics']['exclude_areas']]
 
-        # Extract price range from sold listings or fallback to price range
-        sold_min = agent['experience']['sold_listings'].get('min', 0)
-        sold_max = agent['experience']['sold_listings'].get('max', float('inf'))
-        agent_min = sold_min if sold_min > 0 else agent['experience']['price_range'].get('min', 0)
-        agent_max = sold_max if sold_max > 0 else agent['experience']['price_range'].get('max', float('inf'))
+        # Debug print for first few agents
+        if len(filtered_agents) == 0:
+            print(f"\nExample Agent:")
+            print(f"Name: {agent.get('name')}")
+            print(f"Areas: {agent.get('served_areas')}")
+            print(f"Price Range: {agent['experience']['sold_listings'].get('min')} - {agent['experience']['sold_listings'].get('max')}")
 
-        # Debug logs to inspect each step
-        logging.info(f"Evaluating agent: {agent.get('name', 'Unknown')}")
-        logging.info(f"Agent areas: {agent_areas}")
-        logging.info(f"Agent sold price range: {sold_min} - {sold_max}")
+        # Extract price range from sold listings count instead of direct min/max
+        sold_listings = agent['experience']['sold_listings'].get('count', {})
+        agent_min = sold_listings.get('min', 0)
+        agent_max = sold_listings.get('max', float('inf'))
 
-        # Check area inclusion
-        if not any(area in agent_areas for area in search_params['area_specifics']['include_areas']):
-            logging.info("Filtered out due to area inclusion mismatch.")
+        # Check area inclusion - Update logic
+        if not any(include_area in agent_areas for include_area in search_include_areas):
             continue
 
         # Check area exclusion
-        if any(area in agent_areas for area in search_params['area_specifics']['exclude_areas']):
-            logging.info("Filtered out due to area exclusion.")
+        if any(exclude_area in agent_areas for exclude_area in search_exclude_areas):
             continue
 
         # Check budget using adjusted min and max values
-        if agent_min > search_params['budget']['max'] or agent_max < search_params['budget']['min']:
-            logging.info("Filtered out due to budget mismatch.")
+        if (agent_min > search_params['budget']['max'] or 
+            agent_max < search_params['budget']['min']):
             continue
 
         # If all conditions pass, add to filtered list
         filtered_agents.append(agent)
-        logging.info("Agent added to filtered list.")
     
-    logging.info(f"Total filtered agents: {len(filtered_agents)}")
     return filtered_agents
 
 

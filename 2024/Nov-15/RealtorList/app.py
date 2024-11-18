@@ -9,6 +9,19 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def home():
+    """Default route for the root URL."""
+    return jsonify({
+        "message": "Welcome to the Realtor Search API!",
+        "available_endpoints": [
+            "/health - Check API health",
+            "/run_search - Search for agents (POST)",
+            "/scrape - Scrape agent data (POST)"
+        ],
+        "timestamp": datetime.now(UTC).isoformat()
+    })
+
 @app.route('/health', methods=['GET'])
 def health_check():
     """Simple health check endpoint for Make.com."""
