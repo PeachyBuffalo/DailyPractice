@@ -1,21 +1,30 @@
 # Daily Project - Dec-20, 2024
 
 ## Project Title
-[Project title goes here]
+Weather Dashboard
 
 ## Description
-[Project description goes here]
+A Python-based weather dashboard that fetches real-time weather data using the OpenWeatherMap API. The application displays current weather conditions, temperature, humidity, and a 5-day forecast with a clean GUI interface.
 
 ## Technologies Used
-- [Technology 1]
-- [Technology 2]
+- Python 3.9+
+- Tkinter (GUI)
+- Requests library
+- OpenWeatherMap API
+- JSON
 
 ## Setup Instructions
-1. [Setup step 1]
-2. [Setup step 2]
+1. Clone the repository
+2. Install required packages: `pip install requests`
+3. Create a `.env` file and add your OpenWeatherMap API key:   ```
+   API_KEY=your_api_key_here   ```
+4. Run `python weather_dashboard.py`
 
 ## Screenshots
-[Add screenshots here]
+[Screenshots will be added after implementation]
 
 ## Lessons Learned
-[What did you learn while building this project?]
+- Working with external APIs and handling JSON responses
+- Building responsive GUI applications with Tkinter
+- Managing environment variables for secure API key storage
+- Error handling for network requests

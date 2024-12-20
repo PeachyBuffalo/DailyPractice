@@ -1,16 +1,30 @@
 # Project Notes
 
 ## Overview
-[Project overview goes here]
+Weather Dashboard is a desktop application that provides real-time weather information using Python and the OpenWeatherMap API.
 
 ## Implementation Details
-[Technical details go here]
+- GUI built using Tkinter for cross-platform compatibility
+- API integration with OpenWeatherMap for weather data
+- Data caching to minimize API calls
+- Error handling for network issues and API limits
+- Custom widgets for weather display
 
 ## Challenges Faced
-[List challenges and solutions]
+- API rate limiting considerations
+- GUI layout responsiveness
+- Data refresh management
+- Error state handling
 
 ## Resources Used
-[List helpful resources, tutorials, etc.]
+- OpenWeatherMap API documentation
+- Tkinter documentation
+- Python requests library documentation
+- Environment variable management guides
 
 ## Future Improvements
-[Ideas for future enhancements]
+- Add location search functionality
+- Implement weather alerts
+- Add data visualization for historical weather
+- Include multiple temperature unit options
+- Add weather map integration
