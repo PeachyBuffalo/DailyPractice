@@ -1,16 +1,28 @@
 # Project Notes
 
 ## Overview
-[Project overview goes here]
+Building a TypeScript-based command-line Task Manager that demonstrates core TypeScript concepts while creating a practical application.
 
 ## Implementation Details
-[Technical details go here]
+- Using TypeScript interfaces for Task type definition
+- Implementing async file operations for data persistence
+- Creating a command-line interface using readline
+- Organizing code using classes and modules
 
 ## Challenges Faced
-[List challenges and solutions]
+- Setting up proper TypeScript configuration
+- Handling async operations with type safety
+- Managing user input validation
+- Implementing proper error handling
 
 ## Resources Used
-[List helpful resources, tutorials, etc.]
+- TypeScript Documentation
+- Node.js fs/promises API
+- readline-sync documentation
+- JSON storage best practices
 
 ## Future Improvements
-[Ideas for future enhancements]
+- Add due dates to tasks
+- Implement task categories
+- Add priority levels
+- Create a web-based interface

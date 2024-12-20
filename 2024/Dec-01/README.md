@@ -1,21 +1,27 @@
 # Daily Project - Dec-01, 2024
 
 ## Project Title
-[Project title goes here]
+TypeScript Task Manager
 
 ## Description
-[Project description goes here]
+A simple command-line task management application built with TypeScript. Users can add, list, complete, and delete tasks with persistent storage using JSON.
 
 ## Technologies Used
-- [Technology 1]
-- [Technology 2]
+- TypeScript
+- Node.js
+- fs/promises for file handling
+- readline for user input
 
 ## Setup Instructions
-1. [Setup step 1]
-2. [Setup step 2]
+1. Install dependencies: `npm install`
+2. Compile TypeScript: `npm run build`
+3. Run the application: `npm start`
 
 ## Screenshots
-[Add screenshots here]
+[To be added after implementation]
 
 ## Lessons Learned
-[What did you learn while building this project?]
+- TypeScript type system for managing task interfaces
+- Working with async/await in TypeScript
+- File system operations for data persistence
+- Command-line interface design patterns

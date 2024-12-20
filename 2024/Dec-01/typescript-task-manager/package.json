@@ -1,0 +1,20 @@
+{
+  "name": "typescript-task-manager",
+  "version": "1.0.0",
+  "description": "A command-line task management application built with TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "keywords": ["typescript", "task-manager", "cli"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.10.4",
+    "@types/readline-sync": "^1.4.8",
+    "readline-sync": "^1.4.10",
+    "typescript": "^5.3.3"
+  }
+}
